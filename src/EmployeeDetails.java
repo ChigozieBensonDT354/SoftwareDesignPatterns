@@ -574,6 +574,9 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					nextRecord();// look for next record
 					displayRecords(currentEmployee);
 				} 
+				else {
+					change = false;
+				}
 			} 
 		} 
 	}
