@@ -194,7 +194,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 				
 				JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
 			//setToWhite();
-			}// end else
+			}
 		}// end if
 		else if (e.getSource() == cancel)
 			dispose();// dispose dialog
