@@ -169,7 +169,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 	}// end checkInput
 
 	// set text field to white colour
-	public void setToWhite() {
+	/*public void setToWhite() {
 		ppsField.setBackground(Color.WHITE);
 		surnameField.setBackground(Color.WHITE);
 		firstNameField.setBackground(Color.WHITE);
@@ -177,7 +177,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		genderCombo.setBackground(Color.WHITE);
 		departmentCombo.setBackground(Color.WHITE);
 		fullTimeCombo.setBackground(Color.WHITE);
-	}// end setToWhite
+	}// end setToWhite*/
 
 	// action performed
 	public void actionPerformed(ActionEvent e) {
@@ -191,8 +191,9 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			}// end if
 			// else display message and set text fields to white colour
 			else {
+				
 				JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-				setToWhite();
+			//setToWhite();
 			}// end else
 		}// end if
 		else if (e.getSource() == cancel)
