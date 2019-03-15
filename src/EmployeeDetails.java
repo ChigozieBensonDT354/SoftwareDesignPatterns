@@ -682,12 +682,15 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	// check if file name has extension .dat
 	private boolean checkFileName(File fileName) {
 		boolean checkFile = false;
-		int length = fileName.toString().length();
+		String file = fileName.toString();
+		if(file.endsWith(".dat"))
+			checkFile  = true;
+		
 
-		// check if last characters in file name is .dat
+		/*// check if last characters in file name is .dat
 		if (fileName.toString().charAt(length - 4) == '.' && fileName.toString().charAt(length - 3) == 'd'
 				&& fileName.toString().charAt(length - 2) == 'a' && fileName.toString().charAt(length - 1) == 't')
-			checkFile = true;
+			checkFile = true;*/
 		return checkFile;
 	}
 
