@@ -125,16 +125,13 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 	Validator vd = new Validator();
 	// check for input in text fields
 	public boolean checkInput() {
-		boolean valid =vd.validate2(ppsField,surnameField,firstNameField,genderCombo,departmentCombo);
+		boolean valid = vd.validate2(ppsField,surnameField,firstNameField,genderCombo,departmentCombo,salaryField,fullTimeCombo);
 		// if any of inputs are in wrong format, colour text field and display message
 		/*if (ppsField.getText().equals("")) {
 			ppsField.setBackground(colors.red);
 			valid = false;
 		}// end if
-		if (this.parent.correctPps(this.ppsField.getText().trim(), -1)) {
-			ppsField.setBackground(colors.red);
-			valid = false;
-		}// end if
+		
 		if (surnameField.getText().isEmpty()) {
 			surnameField.setBackground(colors.red);
 			valid = false;
@@ -152,8 +149,12 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			valid = false;
 		}// end if
 		*/
-		if(valid == true) {
-		try {// try to get values from text field
+	//	if(valid == true) {
+			if (this.parent.correctPps(this.ppsField.getText().trim(), -1)) {
+				ppsField.setBackground(colors.red);
+				valid = false;
+			}// end if
+	/*	try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
 			if (Double.parseDouble(salaryField.getText()) < 0) {
@@ -169,7 +170,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			fullTimeCombo.setBackground(colors.red);
 			valid = false;
 		}// end if
-		}
+		}*/
 		return valid;
 	}// end checkInput
 
