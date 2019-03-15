@@ -85,6 +85,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	String[] department = { "", "Administration", "Production", "Transport", "Management" };
 	// full time combo box values
 	String[] fullTime = { "", "Yes", "No" };
+	Colors colors;
 
 	// initialize menu bar
 	private JMenuBar menuBar() {
@@ -280,13 +281,13 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				field.getDocument().addDocumentListener(this);
 			} // end if
 			else if (empDetails.getComponent(i) instanceof JComboBox) {
-				empDetails.getComponent(i).setBackground(Color.WHITE);
+				empDetails.getComponent(i).setBackground(colors.white);
 				empDetails.getComponent(i).setEnabled(false);
 				((JComboBox<String>) empDetails.getComponent(i)).addItemListener(this);
 				((JComboBox<String>) empDetails.getComponent(i)).setRenderer(new DefaultListCellRenderer() {
 					// set foregroung to combo boxes
 					public void paint(Graphics g) {
-						setForeground(new Color(65, 65, 65));
+						setForeground(colors.foreground);
 						super.paint(g);
 					}// end paint
 				});
@@ -472,10 +473,10 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			} // end if
 		} // end try
 		catch (NumberFormatException e) {
-			searchByIdField.setBackground(new Color(255, 150, 150));
+			searchByIdField.setBackground(colors.red);
 			JOptionPane.showMessageDialog(null, "Wrong ID format!");
 		} // end catch
-		searchByIdField.setBackground(Color.WHITE);
+		searchByIdField.setBackground(colors.white);
 		searchByIdField.setText("");
 	}// end searchEmployeeByID
 
@@ -713,45 +714,45 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		// if any of inputs are in wrong format, colour text field and display
 		// message
 		if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			ppsField.setBackground(colors.red);
 			valid = false;
 		} 
 		if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentByteStart)) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			ppsField.setBackground(colors.red);
 			valid = false;
 		} 
 		if (surnameField.isEditable() && surnameField.getText().trim().isEmpty()) {
-			surnameField.setBackground(new Color(255, 150, 150));
+			surnameField.setBackground(colors.red);
 			valid = false;
 		} 
 		if (firstNameField.isEditable() && firstNameField.getText().trim().isEmpty()) {
-			firstNameField.setBackground(new Color(255, 150, 150));
+			firstNameField.setBackground(colors.red);
 			valid = false;
 		}
 		if (genderCombo.getSelectedIndex() == 0 && genderCombo.isEnabled()) {
-			genderCombo.setBackground(new Color(255, 150, 150));
+			genderCombo.setBackground(colors.red);
 			valid = false;
 		} 
 		if (departmentCombo.getSelectedIndex() == 0 && departmentCombo.isEnabled()) {
-			departmentCombo.setBackground(new Color(255, 150, 150));
+			departmentCombo.setBackground(colors.red);
 			valid = false;
 		} 
 		try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
 			if (Double.parseDouble(salaryField.getText()) < 0) {
-				salaryField.setBackground(new Color(255, 150, 150));
+				salaryField.setBackground(colors.red);
 				valid = false;
 			} 
 		} 
 		catch (NumberFormatException num) {
 			if (salaryField.isEditable()) {
-				salaryField.setBackground(new Color(255, 150, 150));
+				salaryField.setBackground(colors.red);
 				valid = false;
 			} // end if
 		} // end catch
 		if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
-			fullTimeCombo.setBackground(new Color(255, 150, 150));
+			fullTimeCombo.setBackground(colors.red);
 			valid = false;
 		} 
 		if (!valid)
