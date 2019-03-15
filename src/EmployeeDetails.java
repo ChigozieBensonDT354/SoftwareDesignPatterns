@@ -693,6 +693,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			checkFile = true;*/
 		return checkFile;
 	}
+	Validator vd = new Validator();
 
 	// check if any changes text field where made
 	private boolean checkForChanges() {
@@ -714,10 +715,20 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 	// check for input in text fields
 	private boolean checkInput() {
-		boolean valid = true;
+		String pps = ppsField.getText().trim();
+		String surname = surnameField.getText().trim();
+		String fName = firstNameField.getText().trim();
+		int gender = genderCombo.getSelectedIndex();
+		int dept = departmentCombo.getSelectedIndex();
+		
+		
+		//boolean valid = true;
+		boolean valid2 = true;
+		//valid = vd.validate(pps,surname,fName,gender,dept);
+		valid2 = vd.validate2(ppsField,surnameField,firstNameField,genderCombo,departmentCombo);
 		// if any of inputs are in wrong format, colour text field and display
 		// message
-		if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
+	/*	if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
 			ppsField.setBackground(colors.red);
 			valid = false;
 		} 
@@ -740,32 +751,41 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		if (departmentCombo.getSelectedIndex() == 0 && departmentCombo.isEnabled()) {
 			departmentCombo.setBackground(colors.red);
 			valid = false;
-		} 
+		} */
+	
+			if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentByteStart)) {
+				ppsField.setBackground(colors.red);
+				valid2 = false;
+			} 
+			if(valid2 == true) {
+	
 		try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
 			if (Double.parseDouble(salaryField.getText()) < 0) {
 				salaryField.setBackground(colors.red);
-				valid = false;
+				valid2 = false;
 			} 
 		} 
 		catch (NumberFormatException num) {
 			if (salaryField.isEditable()) {
 				salaryField.setBackground(colors.red);
-				valid = false;
+				valid2= false;
 			} // end if
 		} // end catch
 		if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
 			fullTimeCombo.setBackground(colors.red);
-			valid = false;
+			valid2 = false;
 		} 
-		if (!valid)
+		
+		if (!valid2)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
 		// set text field to white colour if text fields are editable
 		if (ppsField.isEditable())
 			setToWhite();
+		}
 
-		return valid;
+		return valid2;
 	}
 
 	

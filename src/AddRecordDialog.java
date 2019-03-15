@@ -122,12 +122,12 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		this.parent.addRecord(theEmployee);
 		this.parent.displayRecords(theEmployee);
 	}
-
+	Validator vd = new Validator();
 	// check for input in text fields
 	public boolean checkInput() {
-		boolean valid = true;
+		boolean valid =vd.validate2(ppsField,surnameField,firstNameField,genderCombo,departmentCombo);
 		// if any of inputs are in wrong format, colour text field and display message
-		if (ppsField.getText().equals("")) {
+		/*if (ppsField.getText().equals("")) {
 			ppsField.setBackground(colors.red);
 			valid = false;
 		}// end if
@@ -151,6 +151,8 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			departmentCombo.setBackground(colors.red);
 			valid = false;
 		}// end if
+		*/
+		if(valid == true) {
 		try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
@@ -167,6 +169,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			fullTimeCombo.setBackground(colors.red);
 			valid = false;
 		}// end if
+		}
 		return valid;
 	}// end checkInput
 
