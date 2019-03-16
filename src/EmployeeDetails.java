@@ -411,75 +411,14 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		SearchDialog search = new SearchDialog(EmployeeDetails.this);
 		if (isSomeoneToDisplay()) {
 			firstRecord();
-//			System.out.println("HELLO");
 		search.searchEmployeeById( searchByIdField, idField);
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "No Employees registered!");
 		}
-//		boolean found = false;
-//		try {// try to read correct correct from input
-//			if (isSomeoneToDisplay()) {
-//				firstRecord();
-//				int firstId = currentEmployee.getEmployeeId();
-//				if (searchByIdField.getText().trim().equals(idField.getText().trim()))
-//					found = true;
-//				else if (searchByIdField.getText().trim().equals(Integer.toString(currentEmployee.getEmployeeId()))) {
-//					found = true;
-//					displayEmployeeRecords(currentEmployee);
-//				}
-//				else {
-//					nextRecord();
-//					while (firstId != currentEmployee.getEmployeeId()) {
-//							if (Integer.parseInt(searchByIdField.getText().trim()) == currentEmployee.getEmployeeId()) {
-//							found = true;
-//							displayEmployeeRecords(currentEmployee);
-//							break;
-//						} else
-//							nextRecord();
-//					}
-//				}
-//				if (!found)
-//					JOptionPane.showMessageDialog(null, "Employee not found!");
-//			} 
-//		} 
-//		catch (NumberFormatException e) {
-//			searchByIdField.setBackground(colors.red);
-//			JOptionPane.showMessageDialog(null, "Wrong ID format!");
-//		} // end catch
-//		searchByIdField.setBackground(colors.white);
-//		searchByIdField.setText("");
+
  }
-	// search Employee by surname
-//	public void searchEmployeeBySurname() {
-//		boolean found = false;
-//		if (isSomeoneToDisplay()) {
-//			firstRecord();
-//			String firstSurname = currentEmployee.getSurname().trim();
-//			if (searchBySurnameField.getText().trim().equalsIgnoreCase(surnameField.getText().trim()))
-//				found = true;
-//			else if (searchBySurnameField.getText().trim().equalsIgnoreCase(currentEmployee.getSurname().trim())) {
-//				found = true;
-//				displayEmployeeRecords(currentEmployee);
-//			} // end else if
-//			else {
-//				nextRecord();// look for next record
-//				// loop until Employee found or until all Employees have been checked
-//				while (!firstSurname.trim().equalsIgnoreCase(currentEmployee.getSurname().trim())) {
-//					if (searchBySurnameField.getText().trim().equalsIgnoreCase(currentEmployee.getSurname().trim())) {
-//						found = true;
-//						displayEmployeeRecords(currentEmployee);
-//						break;
-//					} // end if
-//					else
-//						nextRecord();// look for next record
-//				} // end while
-//			} // end else
-//			if (!found)
-//				JOptionPane.showMessageDialog(null, "Employee not found!");
-//		} // end if
-//		searchBySurnameField.setText("");
-//	}
+
 	// get next free ID from Employees in the file
 	public int getNextFreeId() {
 		int nextFreeId = 0;
