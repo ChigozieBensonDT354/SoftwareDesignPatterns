@@ -26,6 +26,7 @@ public class SearchDialog extends JDialog implements ActionListener {
 
 	public SearchDialog(EmployeeDetails parent, String type) {
 		this.type = type;
+		setTitle("Search By: " + type);
 
 		setModal(true);
 		this.parent = parent;
@@ -44,6 +45,7 @@ public class SearchDialog extends JDialog implements ActionListener {
 
 	public Container searchPane() {
 		JPanel searchPanel = new JPanel(new GridLayout(3, 1));
+		//searchPanel.setBorder(BorderFactory.createTitledBorder("Search By :" + type));
 		JPanel textPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		JLabel searchLabel;
