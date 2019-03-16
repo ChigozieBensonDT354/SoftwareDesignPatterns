@@ -52,7 +52,7 @@ public class SearchDialog extends JDialog implements ActionListener {
 				found = true;
 			else if (searchBySurnameField.getText().trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
 				found = true;
-				this.parent.displayRecords(this.parent.currentEmployee);
+				this.parent.displayEmployeeRecords(this.parent.currentEmployee);
 			} // end else if
 			else {
 				this.parent.nextRecord();
@@ -60,22 +60,21 @@ public class SearchDialog extends JDialog implements ActionListener {
 				while (!firstSurname.trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
 					if (searchBySurnameField.getText().trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
 						found = true;
-						this.parent.displayRecords(this.parent.currentEmployee);
+						this.parent.displayEmployeeRecords(this.parent.currentEmployee);
 						break;
 					}
 					else
-						this.parent.nextRecord();// look for next record
-				} // end while
-			} // end else
+						this.parent.nextRecord();
+				}
+			}
 			if (!found)
 				JOptionPane.showMessageDialog(null, "Employee not found!");
-		 // end if
 		searchBySurnameField.setText("");
 		} 
 	
 	public void searchEmployeeById(JTextField searchByIdField, JTextField idField) {
 		boolean found = false;
-		try {// try to read correct correct from input
+		try {
 			if (this.parent.isSomeoneToDisplay()) {
 				this.parent.firstRecord();
 				int firstId = this.parent.currentEmployee.getEmployeeId();
@@ -83,14 +82,14 @@ public class SearchDialog extends JDialog implements ActionListener {
 					found = true;
 				else if (searchByIdField.getText().trim().equals(Integer.toString(this.parent.currentEmployee.getEmployeeId()))) {
 					found = true;
-					this.parent.displayRecords(this.parent.currentEmployee);
+					this.parent.displayEmployeeRecords(this.parent.currentEmployee);
 				}
 				else {
 					this.parent.nextRecord();
 					while (firstId != this.parent.currentEmployee.getEmployeeId()) {
 							if (Integer.parseInt(searchByIdField.getText().trim()) == this.parent.currentEmployee.getEmployeeId()) {
 							found = true;
-							this.parent.displayRecords(this.parent.currentEmployee);
+							this.parent.displayEmployeeRecords(this.parent.currentEmployee);
 							break;
 						} else
 							this.parent.nextRecord();
@@ -103,7 +102,7 @@ public class SearchDialog extends JDialog implements ActionListener {
 		catch (NumberFormatException e) {
 			searchByIdField.setBackground(Colors.red);
 			JOptionPane.showMessageDialog(null, "Wrong ID format!");
-		} // end catch
+		}
 		searchByIdField.setBackground(Colors.white);
 		searchByIdField.setText("");
 	}
@@ -117,7 +116,6 @@ public class SearchDialog extends JDialog implements ActionListener {
 
 	public Container searchPane() {
 		JPanel searchPanel = new JPanel(new GridLayout(3, 1));
-		//searchPanel.setBorder(BorderFactory.createTitledBorder("Search By :" + type));
 		JPanel textPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		JLabel searchLabel;
@@ -138,10 +136,7 @@ public class SearchDialog extends JDialog implements ActionListener {
 		searchPanel.add(textPanel);
 		searchPanel.add(buttonPanel);
 		return searchPanel;
-	}// end searchPane
-
-	// action listener for save and cancel button
-
+	}
 	public String getDialog() {
 		return dialog;
 	}
@@ -161,20 +156,18 @@ public class SearchDialog extends JDialog implements ActionListener {
 				this.parent.searchEmployeeById();
 				dispose();
 			} catch (NumberFormatException num) {
-				// display message and set colour to text field if entry is wrong
 				searchField.setBackground(Colors.red);
 				JOptionPane.showMessageDialog(null, "Wrong ID format!");
-			} // end catch
-		} // end if
+			} 
+		}
 		else if (e.getSource() == search && type.equals("Surname")) {
 			this.parent.searchBySurnameField.setText(searchField.getText());
-			// search Employee by surname
 			this.parent.searchEmployeeBySurname();
 			dispose();// dispose dialog
-		} // end if
-			// else dispose dialog
+		}
+
 		else if (e.getSource() == cancel)
-			dispose();// dispose dialog
+			dispose();
 	}
 
 }

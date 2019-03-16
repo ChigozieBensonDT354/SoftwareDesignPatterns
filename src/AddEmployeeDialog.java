@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-public class AddRecordDialog extends JDialog implements ActionListener {
+public class AddEmployeeDialog extends JDialog implements ActionListener {
 	JTextField idField, ppsField, surnameField, firstNameField, salaryField;
 	JComboBox<String> genderCombo, departmentCombo, fullTimeCombo;
 	JButton save, cancel;
@@ -30,7 +30,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 	Color colors;
 	MigLayoutManager mlm;
 	// constructor for add record dialog
-	public AddRecordDialog(EmployeeDetails parent) {
+	public AddEmployeeDialog(EmployeeDetails parent) {
 		setTitle("Add Record");
 		setModal(true);
 		this.parent = parent;
@@ -45,7 +45,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		setSize(500, 370);
 		setLocation(350, 250);
 		setVisible(true);
-	}// end AddRecordDialog
+	}// end addEmployeeDialog
 
 	// initialize dialog container
 	public Container dialogPane() {
@@ -108,7 +108,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 	}
 
 	// add record to file
-	public void addRecord() {
+	public void addEmployee() {
 		boolean fullTime = false;
 		Employee theEmployee;
 
@@ -119,8 +119,8 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 				firstNameField.getText().toUpperCase(), genderCombo.getSelectedItem().toString().charAt(0),
 				departmentCombo.getSelectedItem().toString(), Double.parseDouble(salaryField.getText()), fullTime);
 		this.parent.currentEmployee = theEmployee;
-		this.parent.addRecord(theEmployee);
-		this.parent.displayRecords(theEmployee);
+		this.parent.addEmployee(theEmployee);
+		this.parent.displayEmployeeRecords(theEmployee);
 	}
 	Validator vd = new Validator();
 	// check for input in text fields
@@ -192,7 +192,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		if (e.getSource() == save) {
 			// if inputs correct, save record
 			if (checkInput()) {
-				addRecord();// add record to file
+				addEmployee();// add record to file
 				dispose();// dispose dialog
 				this.parent.changesMade = true;
 			}// end if
@@ -206,4 +206,4 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		else if (e.getSource() == cancel)
 			dispose();// dispose dialog
 	}// end actionPerformed
-}// end class AddRecordDialog
+}// end class addEmployeeDialog
