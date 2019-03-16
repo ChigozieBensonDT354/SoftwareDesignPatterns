@@ -42,6 +42,78 @@ public class SearchDialog extends JDialog implements ActionListener {
 		setVisible(true);
 
 	}
+	
+	public void searchEmployeeBySurname(JTextField searchBySurnameField,JTextField surnameField) {
+		boolean found = false;
+	
+		//this.parent.firstRecord();
+		String firstSurname = this.parent.currentEmployee.getSurname().trim();
+		if (searchBySurnameField.getText().trim().equalsIgnoreCase(surnameField.getText().trim()))
+				found = true;
+			else if (searchBySurnameField.getText().trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
+				found = true;
+				this.parent.displayRecords(this.parent.currentEmployee);
+			} // end else if
+			else {
+				this.parent.nextRecord();
+				// loop until Employee found or until all Employees have been checked
+				while (!firstSurname.trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
+					if (searchBySurnameField.getText().trim().equalsIgnoreCase(this.parent.currentEmployee.getSurname().trim())) {
+						found = true;
+						this.parent.displayRecords(this.parent.currentEmployee);
+						break;
+					}
+					else
+						this.parent.nextRecord();// look for next record
+				} // end while
+			} // end else
+			if (!found)
+				JOptionPane.showMessageDialog(null, "Employee not found!");
+		 // end if
+		searchBySurnameField.setText("");
+		} 
+	
+	public void searchEmployeeById(JTextField searchByIdField, JTextField idField) {
+		boolean found = false;
+		try {// try to read correct correct from input
+			if (this.parent.isSomeoneToDisplay()) {
+				this.parent.firstRecord();
+				int firstId = this.parent.currentEmployee.getEmployeeId();
+				if (searchByIdField.getText().trim().equals(idField.getText().trim()))
+					found = true;
+				else if (searchByIdField.getText().trim().equals(Integer.toString(this.parent.currentEmployee.getEmployeeId()))) {
+					found = true;
+					this.parent.displayRecords(this.parent.currentEmployee);
+				}
+				else {
+					this.parent.nextRecord();
+					while (firstId != this.parent.currentEmployee.getEmployeeId()) {
+							if (Integer.parseInt(searchByIdField.getText().trim()) == this.parent.currentEmployee.getEmployeeId()) {
+							found = true;
+							this.parent.displayRecords(this.parent.currentEmployee);
+							break;
+						} else
+							this.parent.nextRecord();
+					}
+				}
+				if (!found)
+					JOptionPane.showMessageDialog(null, "Employee not found!");
+			} 
+		} 
+		catch (NumberFormatException e) {
+			searchByIdField.setBackground(Colors.red);
+			JOptionPane.showMessageDialog(null, "Wrong ID format!");
+		} // end catch
+		searchByIdField.setBackground(Colors.white);
+		searchByIdField.setText("");
+	}
+	         
+	public SearchDialog(EmployeeDetails parent) {
+		super();
+		this.parent = parent;
+	}
+
+	
 
 	public Container searchPane() {
 		JPanel searchPanel = new JPanel(new GridLayout(3, 1));
