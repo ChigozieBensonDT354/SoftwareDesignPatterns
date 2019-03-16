@@ -4,15 +4,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class Validator {
-	
-	
-
 	public Validator() {
 		// TODO Auto-generated constructor stub
-		
-
-		
-	}
+		}
 	
 	public boolean validate2(JTextField ppsField, JTextField surnameField, JTextField firstNameField, JComboBox<String> genderCombo, JComboBox<String> departmentCombo, JTextField salaryField, JComboBox<String> fullTimeCombo) {
 		boolean valid = true;
@@ -22,16 +16,6 @@ public class Validator {
 			valid = false;
 		
 		}
-//		else {
-//			ppsField.setEditable(false);
-//		}
-		///*if (ppsField.isEditable() /*&& ed.correctPps(ppsField.getText().trim(), currentByteStart)*/) {
-		///	ppsField.setBackground(Colors.red);
-			
-		//	valid = false;
-			
-			//System.out.println("reached here" + valid);
-		//} 
 		if (surnameField.isEditable() && surnameField.getText().trim().isEmpty()) {
 			surnameField.setBackground(Colors.red);
 			valid = false;
@@ -48,9 +32,9 @@ public class Validator {
 			departmentCombo.setBackground(Colors.red);
 			valid = false;
 		} 
-		try {// try to get values from text field
+		try {
 			Double.parseDouble(salaryField.getText());
-			// check if salary is greater than 0
+
 			if (Double.parseDouble(salaryField.getText()) < 0) {
 				salaryField.setBackground(Colors.red);
 				valid = false;
@@ -60,17 +44,15 @@ public class Validator {
 			if (salaryField.isEditable()) {
 				salaryField.setBackground(Colors.red);
 				valid = false;
-			} // end if
-		} // end catch
+			} 
+		} 
 		if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
 			fullTimeCombo.setBackground(Colors.red);
 			valid = false;
-		} 
-		
+		} 	
 		if (!valid)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
 		
-		// set text field to white colour if text fields are editable
 		if (ppsField.isEditable()) {
 			setToWhite(ppsField,surnameField,firstNameField,salaryField,genderCombo,departmentCombo,fullTimeCombo);
 			
@@ -88,32 +70,4 @@ public class Validator {
 		fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
 	}
 
-
-
-	public boolean validate(String pps, String surname, String fName, int gender, int dept) {
-		boolean valid = true;
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return valid;
-		
-		
-	}
 }
