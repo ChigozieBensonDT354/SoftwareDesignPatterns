@@ -715,6 +715,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 	// check for input in text fields
 	private boolean checkInput() {
+	//	ppsField.setEditable(true);
 //		String pps = ppsField.getText().trim();
 //		String surname = surnameField.getText().trim();
 //		String fName = firstNameField.getText().trim();
@@ -789,7 +790,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	}
 
 	
-	private void setToWhite() {
+	/*private void setToWhite() {
 		ppsField.setBackground(UIManager.getColor("TextField.background"));
 		surnameField.setBackground(UIManager.getColor("TextField.background"));
 		firstNameField.setBackground(UIManager.getColor("TextField.background"));
@@ -797,7 +798,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		genderCombo.setBackground(UIManager.getColor("TextField.background"));
 		departmentCombo.setBackground(UIManager.getColor("TextField.background"));
 		fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
-	}
+	}*/
 
 	
 	public void setEnabled(boolean booleanValue) {

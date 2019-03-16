@@ -153,7 +153,8 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			if (this.parent.correctPps(this.ppsField.getText().trim(), -1)) {
 				ppsField.setBackground(colors.red);
 				valid = false;
-			}// end if
+			}
+			// end if
 	/*	try {// try to get values from text field
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
@@ -175,7 +176,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 	}// end checkInput
 
 	// set text field to white colour
-	public void setToWhite() {
+	/*public void setToWhite() {
 		ppsField.setBackground(colors.white);
 		surnameField.setBackground(colors.white);
 		firstNameField.setBackground(colors.white);
@@ -183,7 +184,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		genderCombo.setBackground(colors.white);
 		departmentCombo.setBackground(colors.white);
 		fullTimeCombo.setBackground(colors.white);
-	}// end setToWhite
+	}// end setToWhite*/
 
 	// action performed
 	public void actionPerformed(ActionEvent e) {
@@ -198,8 +199,8 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			// else display message and set text fields to white colour
 			else {
 				
-				JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-			setToWhite();
+				//JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
+			//setToWhite();
 			}
 		}// end if
 		else if (e.getSource() == cancel)

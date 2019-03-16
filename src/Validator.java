@@ -20,7 +20,11 @@ public class Validator {
 		if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
 			ppsField.setBackground(Colors.red);
 			valid = false;
-		} 
+		
+		}
+//		else {
+//			ppsField.setEditable(false);
+//		}
 		///*if (ppsField.isEditable() /*&& ed.correctPps(ppsField.getText().trim(), currentByteStart)*/) {
 		///	ppsField.setBackground(Colors.red);
 			
@@ -65,6 +69,7 @@ public class Validator {
 		
 		if (!valid)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
+		
 		// set text field to white colour if text fields are editable
 		if (ppsField.isEditable()) {
 			setToWhite(ppsField,surnameField,firstNameField,salaryField,genderCombo,departmentCombo,fullTimeCombo);
